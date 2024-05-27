@@ -1,0 +1,46 @@
+package com.codigo7;
+import java.util.HashMap;// se hizo import
+import java.util.Scanner;// se hizo import
+
+public class Main { //se agrego Main
+
+	public static void main(String[] args) { // se agrego el static void
+		Scanner s = new Scanner(System.in);  // se agrega System.in
+        HashMap<String, String> capitales = new HashMap<>();  // se cambio en los valores a String 
+        
+        capitales.put("Canadá", "Ottawa");
+        capitales.put("Estados Unidos", "Washington DC");
+        capitales.put("México", "Ciudad de México");  // Se actualizo el dato de: "México DF" a "Ciudad de México"
+        capitales.put("Belice", "Belmopán");
+        capitales.put("Costa Rica", "San José");
+        capitales.put("El Salvador", "San Salvador");  // Se añadio la capital 
+        capitales.put("Guatemala", "Ciudad de Guatemala");
+        capitales.put("Honduras", "Tegucigalpa");
+        capitales.put("Nicaragua", "Managua");
+        capitales.put("Panamá", "Cuidad de Panamá"); // se agrego Cuidad para diferenciarla de la capital
+
+        String c = "";
+
+        
+        do {
+            System.out.print("Escribe el nombre de un país (Primera letra mayúscula y con acentos si es el caso) y te diré su capital: ");
+            c = s.nextLine();  // Se cambio nextDouble() a nextLine() para leer String
+            
+            
+            if (!c.equalsIgnoreCase("salir")) {  // Se usó equalsIgnoreCase para comparar cadenas sin importar mayúsculas/minúsculas
+                if (capitales.containsKey(c)) {
+                	// System.out.print("La capital de :" + c); se comento para que no saliera doble impresion en pantalla
+                    System.out.println("La capital de " + c + " es:  " + capitales.get(c)); //se agrego el out que faltaba 
+                } else {
+                    System.out.print("No conozco la respuesta. ");
+                    System.out.print("¿Cuál es la capital de " + c + "?: ");
+                    String capital = s.nextLine(); // se cambio nombre de variable porque marcaba error
+                    capitales.put(c, capital);
+                    System.out.println("Gracias por enseñarme nuevas capitales.");
+                }
+            }
+        } while (!c.equalsIgnoreCase("salir"));  // se agrego h de "wile" a "while"
+
+        s.close();  // se agrego para cerrar el Scanner 
+    }
+}
